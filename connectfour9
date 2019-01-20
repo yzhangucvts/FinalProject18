@@ -1,0 +1,234 @@
+#import random module
+import random
+
+#create person class to greet players
+class Person:
+  def __init__(self, name):
+    self.name = name
+
+  def greeting(self):
+    print("Hello " + self.name + "! Welcome to Connect Four!")
+
+#main program loop
+while True:
+
+    #create board list
+    board = []
+
+    #formats board
+    for y in range(0, 6):
+        row = ["_" for x in range(0, 7)]
+        board.append(row)
+
+    #create piece variable
+    piece = ""
+
+    #create fullcolumn list
+    fullcolumn = []
+
+    #create play function
+    def play(choice, player):
+        if game == True:
+            print(f"Column {choice+1} was chosen.")
+        if player == "player":
+            piece = "P"
+        else:
+            piece = "C"
+        if board[0][choice] != "_":
+            if board[1][choice] != "_":
+                if board[2][choice] != "_":
+                    if board[3][choice] != "_":
+                        if board[4][choice] != "_":
+                            if board[5][choice] != "_":
+                                    if choice not in fullcolumn:
+                                        fullcolumn.append(choice)
+                                        fullcolumn.sort()
+                            else:
+                                board[5][choice] = piece
+                                fullcolumn.append(choice)
+                                fullcolumn.sort()
+                        else:
+                            board[4][choice] = piece
+                    else:
+                        board[3][choice] = piece
+                else:
+                    board[2][choice] = piece
+            else:
+                board[1][choice] = piece
+        else:
+            board[0][choice] = piece
+
+    #create win function
+    def win(column, row):
+        if column-3 in range(0, 8) and row+3 in range(0,7):
+            if board[column][row] == "P" and board[column-1][row+1] == "P" and board[column-2][row+2] == "P" and board[column-3][row+3] == "P":
+                return (True,True)
+        if column-3 in range(0, 8) and row+3 in range(0,7):
+            if board[column][row] == "C" and board[column-1][row+1] == "C" and board[column-2][row+2] == "C" and board[column-3][row+3] == "C":
+                return (True,False)
+        if column-3 in range(0, 8) and row-3 in range(0,7):
+            if board[column][row] == "P" and board[column-1][row-1] == "P" and board[column-2][row-2] == "P" and board[column-3][row-3] == "P":
+                return (True,True)
+        if column-3 in range(0, 8) and row-3 in range(0,7):
+            if board[column][row] == "C" and board[column-1][row-1] == "C" and board[column-2][row-2] == "C" and board[column-3][row-3] == "C":
+                return (True,False)
+        if row+3 in range(0, 7):
+            if board[column][row] == "P" and board[column][row+1] == "P" and board[column][row+2] == "P" and board[column][row+3] == "P":
+                return (True,True)
+        if row+3 in range(0, 7):
+            if board[column][row] == "C" and board[column][row+1] == "C" and board[column][row+2] == "C" and board[column][row+3] == "C":
+                return (True,False)
+        if column-3 in range(0, 8):
+            if board[column][row] == "P" and board[column-1][row] == "P" and board[column-2][row] == "P" and board[column-3][row] == "P":
+                return (True,True)
+        if column-3 in range(0, 8):
+            if board[column][row] == "C" and board[column-1][row] == "C" and board[column-2][row] == "C" and board[column-3][row] == "C":
+                return (True,False)
+        return (False,False)
+
+    #create no winner variable and set as true
+    nowinner = True
+
+    #create game variable and set as true
+    game = True
+
+    #create main game while loop
+    while game == True:
+        if nowinner == True:
+            whichgame = input("\nWould you like to play a 1 player game or a 2 player game? Please type 1 or 2!\n")
+
+            #if user does not input 1 or 2, ask user to input again
+            while not (whichgame == "1" or whichgame == "2"):
+                whichgame = input("\nPlease type only either 1 or 2!\n")
+            if whichgame == "1":
+                person1 = Person(input("What is your name?").title())
+                person1.greeting()
+                print ("The leftmost column is 1 and the rightmost column is 7. P is the player and C is the computer!")
+                for x in range (0,6):
+                    #prints row 1 as bottom row instead of top row
+                    if game == True:
+                        print(board[5-x], "\n")
+
+                #while there is no winner yet, allow the user and computer to take turns choosing a column to put their piece in
+                while nowinner == True:
+
+                    #allow the user to choose a column for their turn
+                    while game == True:
+                        if nowinner == True:
+                            try:
+                                playerchoice = int(input("\nPlayer 1 choose a column from 1 to 7!\n"))
+                            except ValueError:
+                                print ("That's not a number! Try again!")
+                            else:
+                                if 1 <= playerchoice < 8 and (playerchoice-1) not in fullcolumn:
+                                    break
+                                else:
+                                    print ("Please try again!")
+                    play(playerchoice-1, "player")
+
+                    #the computer chooses a column for its turn
+                    while nowinner == True:
+                        computerchoice = random.randint(0, 6)
+                        if 1 <= computerchoice < 8 and (computerchoice-1) not in fullcolumn:
+                            break
+                        else:
+                            continue
+                    play(computerchoice, "computer")
+                    for x in range (0,6):
+                        #prints row 1 as bottom row instead of top row
+                        if game == True:
+                            print(board[5-x], "\n")
+                    if game == True:
+                        for row in range(0, 6):
+                            for column in range(0, 7):
+                                if win(row, column)[0]:
+                                    nowinner = False
+                                    game = False
+                                    computerwin = True
+                                    if (win(row, column)[1] == True):
+                                        computerwin = False
+                                        print("The player wins!")
+                                    elif computerwin == True:
+                                        print("The computer wins!")
+            else:
+                person1 = Person(input("Player 1, what is your name?").title())
+                person1.greeting()
+                person2 = Person(input("Player 2, what is your name?").title())
+                person2.greeting()
+                print ("The leftmost column is 1 and the rightmost column is 7! P is Player 1 and C is Player 2!")
+                for x in range (0,6):
+                    #prints row 1 as bottom row instead of top row
+                    if game == True:
+                        print(board[5-x], "\n")
+
+                #while there is no winner yet, allow both players to take turns choosing a column to put their piece in
+                while nowinner == True:
+
+                    #allow player 1 to choose a column for their turn
+                    while game == True:
+                        if nowinner == True:
+                            try:
+                                playerchoice = int(input("\nPlayer 1 choose a column from 1 to 7!\n"))
+                            except ValueError:
+                                print ("That's not a number! Try again!")
+                            else:
+                                if 1 <= playerchoice < 8 and (playerchoice-1) not in fullcolumn:
+                                    break
+                                else:
+                                    print ("Please try again!")
+                    play(playerchoice-1, "player")
+                    for x in range (0,6):
+                        #prints row 1 as bottom row instead of top row
+                        if game == True:
+                            print(board[5-x], "\n")
+                    if game == True:
+                        for row in range(0, 6):
+                            for column in range(0, 7):
+                                if win(row, column)[0]:
+                                    nowinner = False
+                                    game = False
+                                    if (win(row, column)[1] == True):
+                                        print("Player 1 wins!")
+                                    else:
+                                        print("Player 2 wins!")
+
+                    #allow player 2 to choose a column for their turn
+                    while game == True:
+                        if nowinner == True:
+                            try:
+                                playerchoice = int(input("\nPlayer 2 choose a column from 1 to 7!\n"))
+                            except ValueError:
+                                print ("That's not a number! Try again!")
+                            else:
+                                if 1 <= playerchoice < 8 and (playerchoice-1) not in fullcolumn:
+                                    break
+                                else:
+                                    print ("Please try again!")
+                    play(playerchoice-1, "player2")
+                    for x in range (0,6):
+                        #prints row 1 as bottom row instead of top row
+                        if game == True:
+                            print(board[5-x], "\n")
+                    if game == True:
+                        for row in range(0, 6):
+                            for column in range(0, 7):
+                                if win(row, column)[0]:
+                                    nowinner = False
+                                    game = False
+                                    if (win(row, column)[1] == True):
+                                        print("Player 1 wins!")
+                                    else:
+                                        print("Player 2 wins!")
+
+    #replay option
+    while True:
+        playagain = input("Would you like to play again?\n").lower()
+        if playagain in ("yes", "no"):
+            break
+        else:
+            print ("Please only type yes or no!")
+    if playagain == "yes":
+        continue
+    else:
+        print ("Thanks for playing! Goodbye!")
+        break
