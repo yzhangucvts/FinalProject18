@@ -5,3 +5,5 @@ I coded Connect Four using Python. Connect Four is a two player game where the p
 I used the following resource to help me code Connect Four:
 
 “Try and Except in Python.” Python For Beginners, www.pythonforbeginners.com/error-handling/python-try-and-except.
+
+The final version of the code can be found in the commit connectfour9.
