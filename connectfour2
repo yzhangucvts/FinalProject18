@@ -1,0 +1,51 @@
+#import random module
+import random
+
+#main program loop
+while True:
+
+    #create board list
+    board = []
+
+    #formats board
+    for y in range(0, 6):
+        row = ["_" for x in range(0, 7)]
+        board.append(row)
+
+    #create piece variable
+    piece = ""
+
+    #create fullcolumn list
+    fullcolumn = []
+
+    #create play function
+    def play(choice, player):
+        if game == True:
+            print(f"Column {choice+1} was chosen.")
+        if player == "player":
+            piece = "P"
+        else:
+            piece = "C"
+        if board[0][choice] != "_":
+            if board[1][choice] != "_":
+                if board[2][choice] != "_":
+                    if board[3][choice] != "_":
+                        if board[4][choice] != "_":
+                            if board[5][choice] != "_":
+                                    if choice not in fullcolumn:
+                                        fullcolumn.append(choice)
+                                        fullcolumn.sort()
+                            else:
+                                board[5][choice] = piece
+                                fullcolumn.append(choice)
+                                fullcolumn.sort()
+                        else:
+                            board[4][choice] = piece
+                    else:
+                        board[3][choice] = piece
+                else:
+                    board[2][choice] = piece
+            else:
+                board[1][choice] = piece
+        else:
+            board[0][choice] = piece
