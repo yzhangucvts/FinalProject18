@@ -1,9 +1,7 @@
 # Intro to Programming Final Project - Fall 2018
 
-* Project details are in description.md
-* Replace the content of this file with your own info about your project before the due date
-* Don't forget to fill out the [Project Proposal Form](https://airtable.com/shrrdA41unoBvi6Ki) before break.
+I coded Connect Four using Python. Connect Four is a two player game where the players choose where to place their pieces. The goal of the game is to connect four pieces together. The first player in the game has pieces indicated by the letter "P." The second player in the game has pieces indicated by the letter "C." The players take turns placing a piece from the top of the grid into the bottommost open spot on the grid. Once four pieces of the same letter are connected, the according player wins and the game ends.
 
-## Setting Up Your Repo
+I used the following resource to help me code Connect Four:
 
-On the GitHub page for this repository, click the "Fork" button. This will create your own copy of this repository, linked to my original. Use the same cloning method we used before to clone the repository to your PythonAnywhere account
+“Try and Except in Python.” Python For Beginners, www.pythonforbeginners.com/error-handling/python-try-and-except.
