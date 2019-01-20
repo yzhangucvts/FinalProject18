@@ -26,7 +26,7 @@ while True:
     #create fullcolumn list
     fullcolumn = []
 
-    #create play function
+    #create play function to decide whether there is a piece or an open spot at a specific place on the board
     def play(choice, player):
         if game == True:
             print(f"Column {choice+1} was chosen.")
@@ -58,7 +58,7 @@ while True:
         else:
             board[0][choice] = piece
 
-    #create win function
+    #create win function to show the three different ways of winning: diagonally, vertically, and horizontally
     def win(column, row):
         if column-3 in range(0, 8) and row+3 in range(0,7):
             if board[column][row] == "P" and board[column-1][row+1] == "P" and board[column-2][row+2] == "P" and board[column-3][row+3] == "P":
@@ -232,3 +232,4 @@ while True:
     else:
         print ("Thanks for playing! Goodbye!")
         break
+        
