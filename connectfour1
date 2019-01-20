@@ -1,0 +1,19 @@
+#import random module
+import random
+
+#main program loop
+while True:
+
+    #create board list
+    board = []
+
+    #formats board
+    for y in range(0, 6):
+        row = ["_" for x in range(0, 7)]
+        board.append(row)
+
+    #create piece variable
+    piece = ""
+
+    #create fullcolumn list
+    fullcolumn = []
