@@ -7,3 +7,7 @@ I used the following resource to help me code Connect Four:
 “Try and Except in Python.” Python For Beginners, www.pythonforbeginners.com/error-handling/python-try-and-except.
 
 The final version of the code can be found in the file "connectfourfinal."
+
+Here is the link of the Google Slides I made for the presentation portion:
+
+https://docs.google.com/presentation/d/1n1UGEtD_RXJJpEmD65eeLVAE93TkMZSSiI3g2Dipp8g/edit#slide=id.gc6f73a04f_0_0
