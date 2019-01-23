@@ -101,7 +101,7 @@ while True:
             while not (whichgame == "1" or whichgame == "2"):
                 whichgame = input("\nPlease type only either 1 or 2!\n")
             if whichgame == "1":
-                person1 = Person(input("What is your name?").title())
+                person1 = Person(input("What is your name? ").title())
                 person1.greeting()
                 print ("The leftmost column is 1 and the rightmost column is 7. P is the player and C is the computer!")
                 for x in range (0,6):
@@ -151,9 +151,9 @@ while True:
                                     elif computerwin == True:
                                         print("The computer wins!")
             else:
-                person1 = Person(input("Player 1, what is your name?").title())
+                person1 = Person(input("Player 1, what is your name? ").title())
                 person1.greeting()
-                person2 = Person(input("Player 2, what is your name?").title())
+                person2 = Person(input("Player 2, what is your name? ").title())
                 person2.greeting()
                 print ("The leftmost column is 1 and the rightmost column is 7! P is Player 1 and C is Player 2!")
                 for x in range (0,6):
@@ -232,4 +232,3 @@ while True:
     else:
         print ("Thanks for playing! Goodbye!")
         break
-        
