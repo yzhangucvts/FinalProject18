@@ -8,7 +8,9 @@ I used the following resource to help me code Connect Four:
 
 The final version of the code can be found in the file "connectfourfinal."
 
-Here is the link to the Draw.io flowchart:
+The Draw.io flowchart I made can be found in the file "Yunxiu Zhang Code Flowchart.pdf."
+
+Here is also the link to the Draw.io flowchart:
 
 https://www.draw.io/#G1ENGYVhdQXCvFf6MXEdRkS-jzRTSTpNop
 
